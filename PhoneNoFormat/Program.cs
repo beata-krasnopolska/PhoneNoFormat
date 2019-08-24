@@ -10,33 +10,19 @@ namespace PhoneNoFormat
 
             int[] numbers = new int [10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 
-            //Method 1
-            //string phoneNumber = String.Format("{0:(###) ###-####)}", Numbers);
-            //Console.WriteLine(phoneNumber);
+            string phoneNumberInFormat = "(";
 
-            //Method 2
-            string numbersString = String.Join(",",numbers);
-            string phoneFormat = "";
-
-            if (numbersString.Length > 0)
+            for (int i = 0; i < numbers.Length; i++)
             {
-                phoneFormat += "(";
-                int n = 1;
-                foreach (char c in numbersString)
-                {
-                    phoneFormat += c;
-                    if (n == 3)
-                    {
-                        phoneFormat += ")";
-                    }
-                    else if (n == 6)
-                    {
-                        phoneFormat += "-";
-                    }
-                }
-            }
-            Console.WriteLine(phoneFormat);
+                if (i == 3)
+                    phoneNumberInFormat += ") ";
+                else if (i == 6)
+                    phoneNumberInFormat += "-";
 
+                phoneNumberInFormat += numbers[i];
+            }
+
+            Console.WriteLine(phoneNumberInFormat);
 
             Console.ReadKey();
         }
